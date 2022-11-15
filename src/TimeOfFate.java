@@ -1,16 +1,17 @@
 public class TimeOfFate {
     private String classInLife;
-
+    private int wealth;
+    private int happiness;
     public TimeOfFate(String classInLife){
         this.classInLife = classInLife;
     }
 
-    public TimeOfFate(){
+    public TimeOfFate(int randomClass){
         int random = (int)(Math.random()*3)+1;
         if(random == 1){
             classInLife = "Royalty";
         }
-        else if(random == 1){
+        else if(random == 2){
             classInLife = "Commoner";
         }
         else{
@@ -18,14 +19,25 @@ public class TimeOfFate {
         }
     }
 
-    public String classAttribute(){
+    public void classAttribute(){
         if(classInLife == "Royalty"){
-            return "You are royalty!";
+            wealth = 1000000;
+            happiness = 100;
+        }
+        else if (classInLife == "Commoner"){
+            wealth = 1000;
+            happiness = 80;
         }
         else{
-            return "you suck";
+            wealth = 10;
+            happiness = 60;
         }
     }
+
+    public String getCurrentAttribute(){
+        return "Class: " + classInLife + "\nHappiness: " + happiness + "\nWealth: " + wealth;
+    }
+
     int currentYear = 1880;
     public void rewindTime(int year) throws InterruptedException {
         int ms = 1000;
